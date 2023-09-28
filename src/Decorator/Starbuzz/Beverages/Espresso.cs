@@ -2,6 +2,11 @@
 
 public class Espresso : Beverage
 {
+    public Espresso(Size size)
+    {
+        SetSize(size);
+    }
+    
     public override string GetDescription()
     {
         return "Espresso";
@@ -9,6 +14,11 @@ public class Espresso : Beverage
 
     public override double Cost()
     {
-        return 1.99;
+        return GetSize() switch
+        {
+            Size.SMALL => 1.99,
+            Size.MEDIUM => 2.1,
+            Size.LARGE => 2.2
+        };
     }
 }

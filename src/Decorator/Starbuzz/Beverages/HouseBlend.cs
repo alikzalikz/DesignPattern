@@ -2,6 +2,10 @@
 
 public class HouseBlend : Beverage
 {
+    public HouseBlend(Size size)
+    {
+        SetSize(size);
+    }
     public override string GetDescription()
     {
         return "House Blend Coffee";
@@ -9,6 +13,11 @@ public class HouseBlend : Beverage
 
     public override double Cost()
     {
-        return .89;
+        return GetSize() switch
+        {
+            Size.SMALL => .89,
+            Size.MEDIUM => 1,
+            Size.LARGE => 1.2
+        };
     }
 }
